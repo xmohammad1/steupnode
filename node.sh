@@ -256,41 +256,13 @@ uj/J5BS0UCDkukAAlVcEtDOo2k5TIneO7r9jJgmfKMI=
     
     get_occupied_ports
     
-    # Prompt the user to enter ports with occupation check
-    while true; do
-        read -p "Enter the SERVICE_PORT (default 62050): " -r SERVICE_PORT
-        if [[ -z "$SERVICE_PORT" ]]; then
-            SERVICE_PORT=62050
-        fi
-        if [[ "$SERVICE_PORT" -ge 1 && "$SERVICE_PORT" -le 65535 ]]; then
-            if is_port_occupied "$SERVICE_PORT"; then
-                colorized_echo red "Port $SERVICE_PORT is already in use. Please enter another port."
-            else
-                break
-            fi
-        else
-            colorized_echo red "Invalid port. Please enter a port between 1 and 65535."
-        fi
-    done
-    
-    while true; do
-        read -p "Enter the XRAY_API_PORT (default 62051): " -r XRAY_API_PORT
-        if [[ -z "$XRAY_API_PORT" ]]; then
-            XRAY_API_PORT=62051
-        fi
-        if [[ "$XRAY_API_PORT" -ge 1 && "$XRAY_API_PORT" -le 65535 ]]; then
-            if is_port_occupied "$XRAY_API_PORT"; then
-                colorized_echo red "Port $XRAY_API_PORT is already in use. Please enter another port."
-            elif [[ "$XRAY_API_PORT" -eq "$SERVICE_PORT" ]]; then
-                colorized_echo red "Port $XRAY_API_PORT cannot be the same as SERVICE_PORT. Please enter another port."
-            else
-                break
-            fi
-        else
-            colorized_echo red "Invalid port. Please enter a port between 1 and 65535."
-        fi
-    done
-    
+
+    SERVICE_PORT=62050
+
+
+
+    XRAY_API_PORT=62051
+
     colorized_echo blue "Generating compose file"
     
     # Write content to the file
