@@ -1,9 +1,6 @@
-tmux new-session -d -s update-session 'sudo apt update -y && sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y && bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/bbr/main/bbr.sh)'
-tmux attach -t update-session
-
-# Wait until the tmux session ends (updates completed)
-tmux wait-for -S update-session
-
+sudo apt update -y
+sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y
+bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/bbr/main/bbr.sh)
 # Path to the script you want to run after reboot
 SCRIPT_PATH="/root/after_reboot.sh"
 sudo wget --header="Authorization: token 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" https://raw.githubusercontent.com/xmohammad1/steupnode/main/after_reboot.sh -O "$SCRIPT_PATH"
