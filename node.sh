@@ -343,7 +343,7 @@ show_marzban_node_logs() {
 }
 
 follow_marzban_node_logs() {
-    $COMPOSE -f $COMPOSE_FILE -p "$APP_NAME" logs -f
+    $COMPOSE -f $COMPOSE_FILE -p "$APP_NAME" logs
 }
 
 update_marzban_node_script() {
