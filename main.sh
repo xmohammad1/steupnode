@@ -15,5 +15,6 @@ CRON_JOB="@reboot sudo $SCRIPT_PATH"
 (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
 echo "Cron job added: $CRON_JOB"
 sleep 15
+echo "Waiting 15 Sec before reboot"
 # Reboot the system
 sudo reboot
