@@ -9,4 +9,4 @@ nameserver 127.0.0.53
 EOL
 tmux new-session -d -s update-session 'bash <(curl -u xmohammad1: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 -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/node.sh) install'
 # Remove the cron job to ensure this script only runs once
-crontab -l | grep -v "@reboot /root/after_reboot.sh" | crontab -
+sudo crontab -l | grep -v '@reboot sudo /root/after_reboot.sh' | sudo crontab -
