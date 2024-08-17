@@ -11,3 +11,5 @@ tmux new-session -d -s update-session 'bash <(curl -u xmohammad1:ghp_Asyp8iuKqZx
 tmux attach -t update-session
 # Wait until the tmux session ends (node setup ends)
 tmux wait-for -S update-session
+# Remove the cron job to ensure this script only runs once
+crontab -l | grep -v "@reboot /root/after_reboot.sh" | crontab -
