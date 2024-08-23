@@ -5,7 +5,7 @@ bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/bbr/main/bbr.sh)
 SCRIPT_PATH="/root/after_reboot.sh"
 sudo wget --header="Authorization: token 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" https://raw.githubusercontent.com/xmohammad1/steupnode/main/after_reboot.sh -O "$SCRIPT_PATH"
 # Ensure the script is executable
-chmod +x "$SCRIPT_PATH"
+sudo chmod +x "$SCRIPT_PATH"
 
 # Define the cron job
 CRON_JOB="@reboot tmux new-session -d -s update-session 'bash $SCRIPT_PATH'"
