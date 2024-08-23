@@ -9,7 +9,7 @@ nameserver 78.157.42.101
 EOL
 fi
 bash <(curl -u xmohammad1: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 -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/node.sh) install
-bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/linux_security/main/main.sh)
+echo 1 | bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/linux_security/main/main.sh)
 # Remove the existing /etc/resolv.conf file
 rm /etc/resolv.conf
 # Create a new /etc/resolv.conf file
