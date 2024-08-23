@@ -20,3 +20,10 @@ nameserver 1.1.1.1
 nameserver 8.8.8.8
 nameserver 127.0.0.53
 EOL
+cat << 'EOF' >> ~/.bashrc
+# Start of tmux auto-attach block
+echo "Yoour Node Is Ready Sir"
+# Remove this entire block after it runs
+sed -i '/# Start of tmux auto-attach block/,/# End of tmux auto-attach block/d' ~/.bashrc
+# End of tmux auto-attach block
+EOF
