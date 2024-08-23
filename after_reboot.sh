@@ -22,7 +22,9 @@ nameserver 127.0.0.53
 EOL
 cat << 'EOF' >> ~/.bashrc
 # Start of tmux auto-attach block
-echo "Yoour Node Is Ready Sir"
+clear
+echo "Your Node Is Ready Sir"
+sleep 2
 # Remove this entire block after it runs
 sed -i '/# Start of tmux auto-attach block/,/# End of tmux auto-attach block/d' ~/.bashrc
 # End of tmux auto-attach block
