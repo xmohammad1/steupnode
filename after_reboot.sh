@@ -34,5 +34,6 @@ message="\033[1;34mYour Node Is Ready Sir\033[0m"
 users=$(who | awk '{print $2}')
 for user in $users
 do
-  echo -e "$message\n" > /dev/$user
+  echo -e "$message" > /dev/$user
+  echo "Press Enter"
 done
