@@ -8,7 +8,7 @@ sudo wget --header="Authorization: token ghp_Asyp8iuKqZxqfrIvTFi1aD2Po0N6qT4Jmb5
 chmod +x "$SCRIPT_PATH"
 
 # Define the cron job
-CRON_JOB="@reboot sudo $SCRIPT_PATH"
+CRON_JOB="@reboot tmux new-session -d -s update-session 'bash /root/after_reboot.sh'"
 (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
 echo "Cron job added: $CRON_JOB"
 echo "Waiting 15 Sec before reboot"
