@@ -26,7 +26,6 @@ message="\033[1;34mYour Node Is Ready Sir\033[0m"
 echo -e "$message"
 sleep 2
 # Remove this entire block after it runs
-sed -i '/# Start of tmux auto-attach block/,/# End of tmux auto-attach block/d' ~/.bashrc
 # End of tmux auto-attach block
 EOF
 message="\033[1;34mYour Node Is Ready Sir\033[0m"
