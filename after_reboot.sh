@@ -35,5 +35,5 @@ users=$(who | awk '{print $2}')
 for user in $users
 do
   echo -e "$message" > /dev/$user
-  echo "Press Enter"
+  echo "Press Enter" > /dev/$user
 done
