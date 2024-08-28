@@ -230,11 +230,11 @@ install_marzban_node() {
     
     get_occupied_ports
     
-
+    source /root/config.cfg
     SERVICE_PORT="$Node_SERVICE_PORT"
 
 
-
+    source /root/config.cfg
     XRAY_API_PORT="$Node_XRAY_API_PORT"
 
     colorized_echo blue "Generating compose file"
