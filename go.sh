@@ -8,18 +8,15 @@ elif [ -z "${Link}" ]; then
     wget https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg -O $FILE
     # Prompt the user to input the certificate
     echo -e "Please paste the content of the Client Certificate, and press ENTER on a new line when finished:"
-    
-    # Read the certificate content
+    # Use sed to remove the specific block of text
+    sed -i '/^CERT_CONTENT="/,/^"$/d' "$FILE"
     CERT_CONTENT=""
     while IFS= read -r line; do
         if [[ -z $line ]]; then
             break
         fi
-        CERT_CONTENT+="$line\n"
-    done
-    
-    # Use sed to replace the existing CERT_CONTENT in the config file
-    sed -i "s|CERT_CONTENT=\".*\"|CERT_CONTENT=\"${CERT_CONTENT}\"|g" "$FILE"
+    CERT_CONTENT+="$line"
+    echo $CERT_CONTENT >> "$FILE"
 else
     wget $Link -O $FILE
 fi
