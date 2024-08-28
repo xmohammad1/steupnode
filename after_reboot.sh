@@ -15,13 +15,15 @@ if [ "$instsll_security" == "yes" ]; then
 else
   echo "Skipping Linxux security"
 fi
-source /root/config.cfg
+
+# Check if DNS should be set
 if [ "$set_dns" == "yes" ]; then
   # Remove the existing /etc/resolv.conf file
   rm -f /etc/resolv.conf
-  # Create a new /etc/resolv.conf file
-  source /root/config.cfg
-  echo "$DNS_CONTENT" > /etc/resolv.conf
+  # Create a new /etc/resolv.conf file using a here document
+  cat <<EOF > /etc/resolv.conf
+$DNS_CONTENT
+EOF
 else
   echo "Skipping Set DNS"
 fi
