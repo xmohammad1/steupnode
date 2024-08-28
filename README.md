@@ -1,5 +1,5 @@
 قبل از اجرا اسکریپت لازمه یه فایل کانفیگ تنظمم کنید [فایل کانفیگ نمونه](https://github.com/xmohammad1/steupnode/blob/main/config.cfg)
-# Method 1
+# روش اول
 داخل سرور فایل کانفیگ خودتونو بزارید
 ```
 nano /root/config.cfg
@@ -9,7 +9,7 @@ nano /root/config.cfg
 bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh)
 ```
 
-# Method 2
+# روش دوم
  جلو لینک اسکریپت لینک فایل config.cfg که تنظیم کردید رو بزارید
 
 
