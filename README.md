@@ -4,6 +4,7 @@
 ```
 nano /root/config.cfg
 ```
+و بعد اسکریپتو اجرا کنید
 ```
 bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh)
 ```
