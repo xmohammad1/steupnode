@@ -1,5 +1,4 @@
 Link="$1"
-
 # config file
 FILE="/root/config.cfg"
 # Check if the file exists
@@ -13,8 +12,6 @@ else
     fi
     wget $Link -O $FILE
 fi
-
-
 if [ -f /root/after_reboot.sh ]; then
     echo "Script runned once already"
     exit 1
