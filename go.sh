@@ -4,14 +4,22 @@ FILE="/root/config.cfg"
 # Check if the file exists
 if [ -f "$FILE" ]; then
     echo "The file $FILE exists."
+elif [ -z "${Link}" ]; then
+    # Prompt the user to input the certificate
+    echo -e "Please paste the content of the Client Certificate, and press ENTER on a new line when finished:"
+    
+    # Read the certificate content
+    CERT_CONTENT=""
+    while IFS= read -r line; do
+        if [[ -z $line ]]; then
+            break
+        fi
+        CERT_CONTENT+="$line\n"
+    done
+    
+    # Use sed to replace the existing CERT_CONTENT in the config file
+    sed -i "s|CERT_CONTENT=\".*\"|CERT_CONTENT=\"${CERT_CONTENT}\"|g" "$FILE"
 else
-    if [ -z "${Link}" ]; then
-        echo
-        echo "make a $FILE in your server or put your config address in front of script link."
-        echo "Like bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh) https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg"
-        echo
-        exit 1
-    fi
     wget $Link -O $FILE
 fi
 if [ -f /root/after_reboot.sh ]; then
