@@ -222,7 +222,7 @@ install_marzban_node() {
         echo -e "\033[1;34m$1\033[0m"
     }
     source /root/config.cfg
-    echo "$CERT_CONTENT" >> "$CERT_FILE"
+    echo "$CERT_CONTENT" | sed '/^$/d' >> "$CERT_FILE"
     
     print_info "Certificate saved to $CERT_FILE"
     
