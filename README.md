@@ -1,4 +1,4 @@
-قبل از اجرا اسکریپت لازمه یه فایل کانفیگ تنظمم کنید [فایل کانفیگ نمونه](https://github.com/xmohammad1/steupnode/blob/main/config.cfg)
+قبل از اجرا اسکریپت لازمه یه فایل کانفیگ تنظیم کنید [فایل کانفیگ نمونه](https://github.com/xmohammad1/steupnode/blob/main/config.cfg)
 # روش اول
 داخل سرور فایل کانفیگ خودتونو بزارید
 ```
