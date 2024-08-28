@@ -20,7 +20,6 @@ if [ "$set_dns" == "yes" ]; then
   rm /etc/resolv.conf
   # Create a new /etc/resolv.conf file
   echo "$DNS_CONTENT" >> /etc/resolv.conf
-EOL
 else
   echo "Skipping Set DNS"
 fi
