@@ -10,7 +10,7 @@ else
         echo "The file $FILE does not exist."
         exit 1
     fi
-    wget $Link
+    wget $Link -O $FILE
 fi
 
 
