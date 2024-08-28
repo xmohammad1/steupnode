@@ -11,7 +11,6 @@
 
 # توضیح
 قبل از اجرا اسکریپت لازمه یه فایل کانفیگ تنظیم کنید
-
 [فایل کانفیگ نمونه](https://github.com/xmohammad1/steupnode/blob/main/config.cfg)
 
 
