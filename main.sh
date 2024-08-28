@@ -1,5 +1,6 @@
 sudo apt update -y
 sudo DEBIAN_FRONTEND=noninteractive apt upgrade -y
+source /root/config.cfg
 if [ "$install_bbr" == "yes" ]; then
   bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/bbr/main/bbr.sh)
 else
