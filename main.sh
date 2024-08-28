@@ -269,7 +269,7 @@ sudo wget https://raw.githubusercontent.com/xmohammad1/steupnode/main/after_rebo
 sudo chmod +x "$SCRIPT_PATH"
 
 # Define the cron job
-CRON_JOB="@reboot tmux new-session -d -s update-session 'bash /root/after_reboot.sh; exec bash'"
+CRON_JOB="@reboot tmux new-session -d -s update-session 'bash /root/after_reboot.sh'"
 (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
 echo "Cron job added: $CRON_JOB"
 echo "Waiting 15 Sec before reboot"
