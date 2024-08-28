@@ -15,15 +15,15 @@ if [ "$instsll_security" == "yes" ]; then
 else
   echo "Skipping Linxux security"
 fi
-
-# Remove the existing /etc/resolv.conf file
-rm /etc/resolv.conf
-# Create a new /etc/resolv.conf file
-cat <<EOL > /etc/resolv.conf
-nameserver 1.1.1.1
-nameserver 8.8.8.8
-nameserver 127.0.0.53
+if [ "$set_dns" == "yes" ]; then
+  # Remove the existing /etc/resolv.conf file
+  rm /etc/resolv.conf
+  # Create a new /etc/resolv.conf file
+  echo "$DNS_CONTENT" >> /etc/resolv.conf
 EOL
+else
+  echo "Skipping Set DNS"
+fi
 cat << 'EOF' >> ~/.bashrc
 # Start of tmux auto-attach block
 message="\033[1;34mYour Node Is Ready Sir\033[0m"
