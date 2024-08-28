@@ -19,7 +19,7 @@ bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.s
 ```
 # روش سوم
 نصب با حالت پیشفرض:
-برای این حالت موقع اجرا لینک کافیه فقط certificate از داخل پنل کپی کنید بدید به اسکریپت تا روی حالت پیش غرض گزینه هارو پیش بره و نصب کامل کنه
+برای این حالت موقع اجرا لینک کافیه فقط certificate از داخل پنل کپی کنید بدید به اسکریپت تا روی حالت پیش فرض گزینه هارو پیش بره و نصب کامل کنه
 ```
 bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh)
 ```
