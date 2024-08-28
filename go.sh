@@ -1,4 +1,4 @@
-Link=""
+Link="$1"
 
 # config file
 FILE="/root/config.cfg"
