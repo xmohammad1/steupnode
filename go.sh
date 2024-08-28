@@ -7,7 +7,8 @@ if [ -f "$FILE" ]; then
     echo "The file $FILE exists."
 else
     if [ -z "${Link}" ]; then
-        echo "make a $FILE or put your config address in front of link."
+        echo "make a $FILE in your server or put your config address in front of script link."
+        echo "Like bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh) https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg"
         exit 1
     fi
     wget $Link -O $FILE
