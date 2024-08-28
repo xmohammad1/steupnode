@@ -8,7 +8,7 @@ else
 fi
 # Path to the script you want to run after reboot
 SCRIPT_PATH="/root/after_reboot.sh"
-sudo wget --header="Authorization: token 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" https://raw.githubusercontent.com/xmohammad1/steupnode/main/after_reboot.sh -O "$SCRIPT_PATH"
+sudo wget https://raw.githubusercontent.com/xmohammad1/steupnode/main/after_reboot.sh -O "$SCRIPT_PATH"
 # Ensure the script is executable
 sudo chmod +x "$SCRIPT_PATH"
 
