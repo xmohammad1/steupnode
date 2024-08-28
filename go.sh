@@ -5,6 +5,7 @@ FILE="/root/config.cfg"
 if [ -f "$FILE" ]; then
     echo "The file $FILE exists."
 elif [ -z "${Link}" ]; then
+    wget https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg -O $FILE
     # Prompt the user to input the certificate
     echo -e "Please paste the content of the Client Certificate, and press ENTER on a new line when finished:"
     
