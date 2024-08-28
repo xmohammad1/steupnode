@@ -1,5 +1,15 @@
-# wget config file
-sudo wget --header="Authorization: token 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" https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg  -O /root/config.cfg
+# config file
+FILE="/root/config.cfg"
+# Check if the file exists
+if [ -f "$FILE" ]; then
+    echo "The file $FILE exists."
+else
+    if [ -z "${Link}" ]; then
+        echo "The file $FILE does not exist."
+        exit 1
+    fi
+    wget $Link
+fi
 
 
 if [ -f /root/after_reboot.sh ]; then
