@@ -20,10 +20,8 @@ fi
 if [ "$set_dns" == "yes" ]; then
   # Remove the existing /etc/resolv.conf file
   rm -f /etc/resolv.conf
-  # Create a new /etc/resolv.conf file using a here document
-  cat <<EOF > /etc/resolv.conf
-$DNS_CONTENT
-EOF
+  # Create a new /etc/resolv.conf file
+  echo "$DNS_CONTENT" | sed '/^$/d' > /etc/resolv.conf
 else
   echo "Skipping Set DNS"
 fi
