@@ -1,3 +1,5 @@
+Link=""
+
 # config file
 FILE="/root/config.cfg"
 # Check if the file exists
