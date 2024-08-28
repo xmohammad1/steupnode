@@ -1,6 +1,6 @@
 # Method 1
 داخل سرور فایل کانفیگ خودتونو بزارید
-فایل کانفیگ نمونه https://github.com/xmohammad1/steupnode/blob/main/config.cfg
+[فایل کانفیگ نمونه](https://github.com/xmohammad1/steupnode/blob/main/config.cfg)
 ```
 nano /root/config.cfg
 ```
