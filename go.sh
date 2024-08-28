@@ -7,7 +7,7 @@ if [ -f "$FILE" ]; then
     echo "The file $FILE exists."
 else
     if [ -z "${Link}" ]; then
-        echo "The file $FILE does not exist."
+        echo "make a $FILE or put your config address in front of link."
         exit 1
     fi
     wget $Link -O $FILE
