@@ -35,7 +35,8 @@ bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.s
 bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh) https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg
 ```
 # روش سوم
-نصب با حالت پیشفرض: تو این روش لازم نیست فایل کانفیگ تنظیم کنید فقط
+نصب با حالت پیشفرض: تو این روش لازم نیست فایل کانفیگ تنظیم کنید
+
 اول اسکریپتو اجرا کنید و بعد فقط certificate از داخل پنل کپی کنید و بدید بهش
 ```
 bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh)
