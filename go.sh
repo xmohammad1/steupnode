@@ -1,12 +1,13 @@
+# wget config file
+sudo wget --header="Authorization: token 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" https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg  -O /root/config.cfg
+
+
 if [ -f /root/after_reboot.sh ]; then
     echo "Script runned once already"
     exit 1
 fi
 cd /root/
-# wget config file
-sudo wget --header="Authorization: token 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" https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg  -O /root/config.cfg
 SCRIPT_PATH="/root/main.sh"
-# wget script file
 sudo wget --header="Authorization: token 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" https://raw.githubusercontent.com/xmohammad1/steupnode/main/main.sh -O $SCRIPT_PATH
 chmod +x "$SCRIPT_PATH"
 tmux new-session -d -s update-session 'bash /root/main.sh'
