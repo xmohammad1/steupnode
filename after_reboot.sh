@@ -8,7 +8,7 @@ nameserver 78.157.42.100
 nameserver 78.157.42.101
 EOL
 fi
-bash <(curl -u xmohammad1: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 -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/node.sh | bash ) install
+bash <(curl -u xmohammad1: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 -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/node.sh) install
 source /root/config.cfg
 if [ "$instsll_security" == "yes" ]; then
   echo 1 | bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/linux_security/main/main.sh)
