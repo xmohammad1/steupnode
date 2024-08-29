@@ -23,6 +23,57 @@ function getGithubLatestReleaseVersion(){
     # https://github.com/p4gefau1t/trojan-go/issues/63
     wget --no-check-certificate -qO- https://api.github.com/repos/$1/tags | grep 'name' | cut -d\" -f4 | head -1 | cut -b 2-
 }
+
+function installSoftDownload(){
+	if [[ "${osRelease}" == "debian" || "${osRelease}" == "ubuntu" ]]; then
+
+        PACKAGE_LIST=( "wget" "curl" "git" "unzip" "apt-transport-https" "cpu-checker" "bc" "cron" )
+
+        # 检查所有软件包是否已安装
+        for package in "${PACKAGE_LIST[@]}"; do
+            if ! dpkg -l | grep -qw "$package"; then
+                # green "$package is not installed. ${osSystemPackage} Installing..."
+                ${osSystemPackage} install -y "$package"
+            fi
+        done
+
+		if ! dpkg -l | grep -qw curl; then
+			${osSystemPackage} -y install wget curl git
+
+            if [[ "${osRelease}" == "debian" ]]; then
+                echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" > /etc/apt/sources.list.d/buster-backports.list
+                echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list.d/buster-backports.list
+                ${sudoCmd} apt update -y
+            fi
+
+		fi
+
+        if ! dpkg -l | grep -qw ca-certificates; then
+			${osSystemPackage} -y install ca-certificates dmidecode
+            update-ca-certificates
+		fi
+
+	elif [[ "${osRelease}" == "centos" ]]; then
+
+        PACKAGE_LIST_Centos=( "wget" "curl" "git" "unzip" "bc" )
+
+        # 检查所有软件包是否已安装
+        for package in "${PACKAGE_LIST_Centos[@]}"; do
+            if ! rpm -qa | grep -qw "$package"; then
+                # green "$package is not installed. ${osSystemPackage} Installing..."
+                ${osSystemPackage} install -y "$package"
+            fi
+        done
+
+        # 处理ca证书
+        if ! rpm -qa | grep -qw ca-certificates; then
+			${osSystemPackage} -y install ca-certificates dmidecode
+            update-ca-trust force-enable
+		fi
+	fi
+
+}
+installSoftDownload
 function installWireguard(){
 
 
