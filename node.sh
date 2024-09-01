@@ -279,6 +279,7 @@ EOL
       - $DATA_DIR:/var/lib/marzban-node
 EOL
     colorized_echo green "File saved in $APP_DIR/docker-compose.yml"
+    fi
 }
 
 
