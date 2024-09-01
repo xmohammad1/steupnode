@@ -278,7 +278,7 @@ EOL
       - $DATA_MAIN_DIR:/var/lib/marzban
       - $DATA_DIR:/var/lib/marzban-node
 EOL
-    colorized_echo green "File saved in $APP_DIR/docker-compose.yml"
+        colorized_echo green "File saved in $APP_DIR/docker-compose.yml"
     fi
 }
 
