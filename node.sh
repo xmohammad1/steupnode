@@ -259,8 +259,20 @@ EOL
       SERVICE_PROTOCOL: "rest"
 EOL
     fi
-    
-    cat >> "$COMPOSE_FILE" <<EOL
+    if [ "$Block_IR" == "yes" ]; then
+        mkdir -p /var/lib/marzban/assets/
+        wget -O /var/lib/marzban/assets/geosite.dat https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat
+        wget -O /var/lib/marzban/assets/geoip.dat https://github.com/v2fly/geoip/releases/latest/download/geoip.dat
+        wget -O /var/lib/marzban/assets/iran.dat https://github.com/bootmortis/iran-hosted-domains/releases/latest/download/iran.dat
+        cat >> "$COMPOSE_FILE" <<EOL
+
+    volumes:
+      - $DATA_MAIN_DIR:/var/lib/marzban
+      - $DATA_DIR:/var/lib/marzban-node
+      - /var/lib/marzban/assets:/usr/local/share/xray
+EOL
+    else
+        cat >> "$COMPOSE_FILE" <<EOL
 
     volumes:
       - $DATA_MAIN_DIR:/var/lib/marzban
