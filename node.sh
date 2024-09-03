@@ -908,3 +908,76 @@ case "$COMMAND" in
         usage
     ;;
 esac
+
+requested_xray_version() {
+        identify_the_operating_system_and_architecture
+        validate_version() {
+        local version="$1"
+        
+        local response=$(curl -s "https://api.github.com/repos/XTLS/Xray-core/releases/tags/$version")
+        if echo "$response" | grep -q '"message": "Not Found"'; then
+            echo "invalid"
+        else
+            echo "valid"
+        fi
+    }    
+    custom_version=$xray_version
+    if [ "$(validate_version "$custom_version")" == "valid" ]; then
+        selected_version="$custom_version"
+    else
+        echo -e "\033[1;31mInvalid version or version does not exist. Please try again.\033[0m"
+        exit 1
+    fi
+
+    
+    echo -e "\033[1;32mSelected version $selected_version for installation.\033[0m"
+    
+    
+    if ! dpkg -s unzip >/dev/null 2>&1; then
+        echo -e "\033[1;33mInstalling required packages...\033[0m"
+        apt install -y unzip >/dev/null 2>&1 &
+        wait
+    fi
+    
+    
+    mkdir -p $DATA_MAIN_DIR/xray-core
+    cd $DATA_MAIN_DIR/xray-core
+    
+    
+    
+    xray_filename="Xray-linux-$ARCH.zip"
+    xray_download_url="https://github.com/XTLS/Xray-core/releases/download/${selected_version}/${xray_filename}"
+    
+    echo -e "\033[1;33mDownloading Xray-core version ${selected_version} in the background...\033[0m"
+    wget "${xray_download_url}" -q &
+    wait
+    
+    
+    echo -e "\033[1;33mExtracting Xray-core in the background...\033[0m"
+    unzip -o "${xray_filename}" >/dev/null 2>&1 &
+    wait
+    rm "${xray_filename}"
+    # Change the Marzban-node core
+    echo "Changing the Marzban-node core..."
+    # Check if the XRAY_EXECUTABLE_PATH string already exists in the docker-compose.yml file
+    if ! grep -q "XRAY_EXECUTABLE_PATH: \"/var/lib/marzban/xray-core/xray\"" "$COMPOSE_FILE"; then
+        # If the string does not exist, add it
+        sed -i '/environment:/!b;n;/XRAY_EXECUTABLE_PATH/!a\      XRAY_EXECUTABLE_PATH: "/var/lib/marzban/xray-core/xray"' "$COMPOSE_FILE"
+    fi
+    
+    # Check if the /var/lib/marzban:/var/lib/marzban string already exists in the docker-compose.yml file
+    if ! grep -q "^\s*- ${DATA_MAIN_DIR}:/var/lib/marzban\s*$" "$COMPOSE_FILE"; then
+        # If the string does not exist, add it
+        sed -i "/volumes:/!b;n;/^- ${DATA_MAIN_DIR}:\/var\/lib\/marzban/!a\      - ${DATA_MAIN_DIR}:\/var\/lib\/marzban" "$COMPOSE_FILE"
+    fi
+    
+    
+    # Restart Marzban-node
+    colorized_echo red "Restarting Marzban-node..."
+    $APP_NAME restart -n
+    colorized_echo blue "Installation XRAY-CORE version $selected_version completed."
+}
+source /root/config.cfg
+if [[ -n "$xray_version" ]]; then
+    requested_xray_version
+fi
