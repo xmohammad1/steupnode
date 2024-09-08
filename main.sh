@@ -238,15 +238,13 @@ function preferIPV4(){
     fi
 
 
-    # 设置 IPv4 优先
-    echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
+	# 设置 IPv4 优先
+	echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
+	
+	
+	
+	curl ip.p3terx.com
 
-
-
-        curl ip.p3terx.com
-
-
-    fi
 
 }
 function checkWireguardBootStatus(){
