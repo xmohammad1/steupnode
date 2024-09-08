@@ -237,29 +237,10 @@ function preferIPV4(){
         sed -i '/^label 2002\:\:\/16/d' /etc/gai.conf
     fi
 
-    # -z 为空
-    if [[ -z $1 ]]; then
 
-        echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
+    # 设置 IPv4 优先
+    echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
 
-    else
-
-        isPreferIPv4Input=${isPreferIPv4Input:-2}
-
-        if [[ ${isPreferIPv4Input} == [2] ]]; then
-
-            # 设置 IPv6 优先
-            echo "label 2002::/16   2" >> /etc/gai.conf
-
-        elif [[ ${isPreferIPv4Input} == [3] ]]; then
-
-            echo
-
-        else
-            # 设置 IPv4 优先
-            echo "precedence ::ffff:0:0/96  100" >> /etc/gai.conf
-
-        fi
 
 
         curl ip.p3terx.com
