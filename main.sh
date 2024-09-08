@@ -39,12 +39,6 @@ function installSoftDownload(){
   if ! dpkg -l | grep -qw curl; then
     apt-get -y install wget curl git
 
-          if [[ "${osRelease}" == "debian" ]]; then
-              echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" > /etc/apt/sources.list.d/buster-backports.list
-              echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list.d/buster-backports.list
-              ${sudoCmd} apt update -y
-          fi
-
   fi
 
       if ! dpkg -l | grep -qw ca-certificates; then
