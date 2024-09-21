@@ -22,6 +22,40 @@
 ```
 nano /root/config.cfg
 ```
+کانفیگو به دلخواه تنظیم کنید 
+دقت کنید داخل "Your Main Panel Cert here" باید از پنل cert بگیرید برای نودتون و قرار بدید
+```
+# Enable bbr (yes / no)
+install_bbr=yes
+
+# Block Iranian Websites (yes / no)
+Block_IR=no
+
+# Install Linxux security (yes / no)
+instsll_security=no
+
+# install WARP IPv6 (yes / no)
+WARP_IPv6=no
+WARP_License=""
+
+# Set DNS (yes / no)
+set_dns=yes
+# DNS Nameservers
+DNS_CONTENT="
+nameserver 1.1.1.1
+nameserver 8.8.8.8
+nameserver 127.0.0.53
+"
+######   node configs  ######
+CERT_CONTENT="
+Your Main Panel Cert here
+"
+# leave it empty or put a version like v1.8.24
+xray_version=""
+#ports
+Node_SERVICE_PORT=62050
+Node_XRAY_API_PORT=62051
+```
 و بعد اسکریپتو اجرا کنید
 ```
 bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh)
@@ -34,11 +68,4 @@ bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.s
  مثال:
 ```
 bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh) https://raw.githubusercontent.com/xmohammad1/steupnode/main/config.cfg
-```
-# روش سوم
-نصب با تنظیمات پیشفرض: تو این روش لازم نیست فایل کانفیگ تنظیم کنید
-
-اول اسکریپتو اجرا کنید و بعد certificate از داخل پنل کپی کنید و بدید بهش
-```
-bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh)
 ```
