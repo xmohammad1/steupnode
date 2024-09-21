@@ -56,7 +56,7 @@ xray_version=""
 Node_SERVICE_PORT=62050
 Node_XRAY_API_PORT=62051
 ```
-و بعد اسکریپتو اجرا کنید
+و در نهایت اسکریپتو اجرا کنید
 ```
 bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/steupnode/main/go.sh)
 ```
