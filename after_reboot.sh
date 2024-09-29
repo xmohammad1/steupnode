@@ -25,6 +25,11 @@ if [ "$set_dns" == "yes" ]; then
 else
   echo "Skipping Set DNS"
 fi
+if [ "$install_bbr" == "yes" ]; then
+  bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/bbr/main/bbr.sh)
+else
+  echo "BBR installation is not enabled in config.cfg skipping."
+fi
 cat << 'EOF' >> ~/.bashrc
 # Start of tmux auto-attach block
 message="\033[1;34mYour Node Is Ready Sir\033[0m"
