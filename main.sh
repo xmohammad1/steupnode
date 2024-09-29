@@ -48,7 +48,6 @@ function installSoftDownload(){
 
 
 }
-installSoftDownload
 function installWireguard(){
 
 
@@ -258,6 +257,7 @@ function checkWireguardBootStatus(){
     fi
 }
 if [ "$WARP_IPv6" == "yes" ]; then
+    installSoftDownload
     installWireguard
 else
     echo "skipping WARP installation"
