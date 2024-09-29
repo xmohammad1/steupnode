@@ -262,11 +262,6 @@ if [ "$WARP_IPv6" == "yes" ]; then
 else
     echo "skipping WARP installation"
 fi
-if [ "$install_bbr" == "yes" ]; then
-  bash <(curl -LS https://raw.githubusercontent.com/xmohammad1/bbr/main/bbr.sh)
-else
-  echo "BBR installation is not enabled in config.cfg skipping."
-fi
 # Path to the script you want to run after reboot
 SCRIPT_PATH="/root/after_reboot.sh"
 sudo wget https://raw.githubusercontent.com/xmohammad1/steupnode/main/after_reboot.sh -O "$SCRIPT_PATH"
